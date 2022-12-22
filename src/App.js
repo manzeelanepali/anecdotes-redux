@@ -12,6 +12,7 @@ const App = () => {
   const addingAnecdotes = (event) => {
     event.preventDefault();
     const content = event.target.anecdote.value;
+
     dispatch({ type: "ADD", data: { content } });
     event.target.anecdote.value = "";
   };
