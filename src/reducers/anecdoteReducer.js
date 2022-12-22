@@ -31,7 +31,9 @@ const reducer = (state = initialState, action) => {
           return { ...anec, votes: anec.votes + 1 };
         else return anec;
       });
-
+    case "ADD":
+      const newAnnecdote = asObject(action.data.content);
+      return [...state, newAnnecdote];
     default:
       return state;
   }
