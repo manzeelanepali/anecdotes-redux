@@ -13,7 +13,6 @@ const App = () => {
     <div>
       <h2>Anecdotes</h2>
 
-      <h>hey</h>
       {anecdotes.map((anecdote) => (
         <div key={anecdote.id}>
           <div>{anecdote.content}</div>
