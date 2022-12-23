@@ -31,8 +31,11 @@ const reducer = (state = initialState, action) => {
           return { ...anec, votes: anec.votes + 1 };
         else return anec;
       });
+
     case "ADD":
       const newAnnecdote = asObject(action.data.content);
+      // console.log("this is creating an issue", action.data.content);
+      // console.log("newnewAnnecdote", newAnnecdote);
       return [...state, newAnnecdote];
     default:
       return state;
@@ -40,3 +43,10 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+export function setVotes(id) {
+  return { type: "VOTE", data: { id } };
+}
+
+export function setAnecdote(content) {
+  return { type: "ADD", data: { content } };
+}
