@@ -1,15 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { increaseVote } from "../reducers/anecdoteReducer";
 import {
   setNotification,
   removeNotification,
 } from "../reducers/notificationReducer";
-import { increaseVote } from "../reducers/anecdoteReducer";
 
 export function AnecdoteList() {
   const anecdotes = useSelector((state) => state.anecdotes);
+  const filterChar = useSelector((state) => state.filters);
 
-  const sortingAnecdotes = [...anecdotes].sort((a, b) => b.votes - a.votes);
+  // const sortingAnecdotes = [...anecdotes].sort((a, b) => b.votes - a.votes);
+  const filteredAnecdotes = anecdotes.filter((anecdote) =>
+    anecdote.content.includes(filterChar)
+  );
+  const sortedAnecdotes = [...filteredAnecdotes].sort(
+    (a, b) => b.votes - a.votes
+  );
 
   const dispatch = useDispatch();
 
@@ -19,6 +26,7 @@ export function AnecdoteList() {
     dispatch(increaseVote(id));
 
     const anecdote = anecdotes.find((anecdote) => anecdote.id === id);
+
     dispatch(setNotification(`you voted '${anecdote.content}' `));
     setTimeout(() => {
       dispatch(removeNotification());
@@ -27,7 +35,7 @@ export function AnecdoteList() {
 
   return (
     <div>
-      {sortingAnecdotes.map((anecdote) => (
+      {sortedAnecdotes.map((anecdote) => (
         <div key={anecdote.id}>
           <div>{anecdote.content}</div>
           <div>
