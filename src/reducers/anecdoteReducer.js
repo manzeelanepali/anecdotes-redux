@@ -21,38 +21,6 @@ const asObject = (anecdote) => {
 
 const initialState = anecdotesAtStart.map(asObject);
 
-// const reducer = (state = initialState, action) => {
-//   // console.log("initial state", initialState);
-//   // console.log("state now: ", state);
-//   // console.log("action", action);
-
-//   switch (action.type) {
-//     case "VOTE":
-//       return state.map((anec) => {
-//         if (anec.id === action.data.id)
-//           return { ...anec, votes: anec.votes + 1 };
-//         else return anec;
-//       });
-
-//     case "ADD":
-//       const newAnnecdote = asObject(action.data.content);
-//       // console.log("this is creating an issue", action.data.content);
-//       // console.log("newnewAnnecdote", newAnnecdote);
-//       return [...state, newAnnecdote];
-//     default:
-//       return state;
-//   }
-// };
-
-// export default reducer;
-// export function setVotes(id) {
-//   return { type: "VOTE", data: { id } };
-// }
-
-// export function setAnecdote(content) {
-//   return { type: "ADD", data: { content } };
-// }
-
 const anecdoteSlice = createSlice({
   name: "anecdotes",
   initialState,
