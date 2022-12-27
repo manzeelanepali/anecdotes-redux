@@ -12,6 +12,8 @@ const asObject = (anecdote) => {
 
 // const initialState = anecdotesAtStart.map(asObject);
 
+// 6.13
+
 const anecdoteSlice = createSlice({
   name: "anecdotes",
   initialState: [],
