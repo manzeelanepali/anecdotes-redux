@@ -50,6 +50,21 @@ export const createAnecdote = (content) => {
     dispatch(addNewAnecdote(newAnnecdote));
   };
 };
+
+export const increamentVote = (id) => {
+  return async (dispatch) => {
+    const anecdotes = await anecdoteService.getAll();
+    // console.log("anecdotes", anecdotes);
+    const anecdoteToUpdate = anecdotes.find((anecdote) => anecdote.id === id);
+    // console.log("anecdoteToupdate", anecdoteToUpdate);
+    const updatedAnecdote = await anecdoteService.updateVote(id, {
+      ...anecdoteToUpdate,
+      votes: anecdoteToUpdate.votes + 1,
+    });
+    dispatch(increaseVote(updatedAnecdote.id));
+  };
+};
+
 export const { increaseVote, addNewAnecdote, setAnecdote } =
   anecdoteSlice.actions;
 export default anecdoteSlice.reducer;

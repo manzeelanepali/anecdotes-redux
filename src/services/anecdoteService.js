@@ -13,4 +13,11 @@ const createNew = async (content) => {
   return response.data;
 };
 
-export default { getAll, createNew };
+const updateVote = (id, anecdoteToUpdate) => {
+  return axios.put(`${baseUrl}/${id}`, anecdoteToUpdate).then((response) => {
+    // console.log("response by axios", response);
+    return response.data;
+  });
+};
+
+export default { getAll, createNew, updateVote };

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseVote } from "../reducers/anecdoteReducer";
+import { increamentVote } from "../reducers/anecdoteReducer";
 import {
   setNotification,
   removeNotification,
@@ -23,7 +23,7 @@ export function AnecdoteList() {
   const vote = (id) => {
     // console.log("vote", id);
     // dispatch({ type: "VOTE", data: { id } });
-    dispatch(increaseVote(id));
+    dispatch(increamentVote(id));
 
     const anecdote = anecdotes.find((anecdote) => anecdote.id === id);
 
