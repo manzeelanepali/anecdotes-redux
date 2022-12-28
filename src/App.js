@@ -15,6 +15,7 @@ const App = () => {
       .getAll()
       .then((response) => dispatch(appendNewAnecdote(response)));
   }, []);
+
   return (
     <div>
       <h2>Anecdotes</h2>

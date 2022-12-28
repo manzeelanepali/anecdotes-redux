@@ -25,8 +25,9 @@ const anecdoteSlice = createSlice({
         else return anec;
       });
     },
+
     addNewAnecdote(state, action) {
-      const newAnnecdote = asObject(action.payload);
+      const newAnnecdote = action.payload;
       return [...state, newAnnecdote];
     },
 
